@@ -1,0 +1,59 @@
+version: '3'
+services:
+  # MySQL
+  db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  # Rails
+  web:
+    build:
+      context: ./
+      dockerfile: ./dockerfile/rails/Dockerfile
+    volumes:
+      - ./backend:/myapp
+    ports:
+      - "5000:3000"
+    links:
+      - db
+      - es
+    tty: true
+    stdin_open: true
+
+  # Elasticsearch
+  es:
+    build:
+      context: ./
+      dockerfile: ./dockerfile/es/Dockerfile
+    container_name: es
+    environment:
+      - cluster.name=rails-sample-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./search_data:/usr/share/elasticsearch/data
+
+  # 必要なときだけ
+  # kibana
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:6.7.2
+  #   environment:
+  #     SERVER_NAME: localhost:5601
+  #     ELASTICSEARCH_URL: http://es:9200
+  #   ports:
+  #     - "5601:5601"
+  #   depends_on:
+  #     - es
