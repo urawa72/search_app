@@ -13,26 +13,25 @@ services:
       - ./mysql_data:/var/lib/mysql
 
   # Rails
-  web:
+  app:
     build:
       context: ./
-      dockerfile: ./dockerfile/rails/Dockerfile
+      dockerfile: ./infra/dockerfiles/rails/Dockerfile
     volumes:
       - ./backend:/myapp
     ports:
       - "5000:3000"
     links:
       - db
-      - es
+      - search
     tty: true
     stdin_open: true
 
   # Elasticsearch
-  es:
+  search:
     build:
       context: ./
-      dockerfile: ./dockerfile/es/Dockerfile
-    container_name: es
+      dockerfile: ./infra/dockerfiles/search/Dockerfile
     environment:
       - cluster.name=rails-sample-cluster
       - bootstrap.memory_lock=true
@@ -52,8 +51,8 @@ services:
   #   image: docker.elastic.co/kibana/kibana:6.7.2
   #   environment:
   #     SERVER_NAME: localhost:5601
-  #     ELASTICSEARCH_URL: http://es:9200
+  #     ELASTICSEARCH_URL: http://localhost:9200
   #   ports:
   #     - "5601:5601"
   #   depends_on:
-  #     - es
+  #     - search

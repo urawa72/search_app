@@ -1,3 +1,4 @@
 .DS_Store
+/backend/vendor
 /mysql_data
-/es_data
+/search_data
