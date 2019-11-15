@@ -24,5 +24,6 @@ if [ ! -d $DIR ]; then
   bundle exec rails db:migrate
   bundle exec rails s -b 0.0.0.0
 else
-  bundle exec rails s -b 0.0.0.0
+  cd /
+  exec bin/bash
 fi
