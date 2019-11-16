@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>This is front application made by vue!</h2>
+    <h2>Front application made by Vue.js!</h2>
     <h3>{{ subMsg }}</h3>
     {{ msg }}
   </div>
@@ -13,7 +13,7 @@ export default {
   name: 'Message',
   data () {
     return {
-      subMsg: 'use Vue, VueRouter, Vuex'
+      subMsg: 'Vue.js, VueRouter, Vuex'
     }
   },
   computed: {
