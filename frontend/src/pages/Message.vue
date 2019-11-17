@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <h2>Front application made by Vue.js!</h2>
-    <h3>{{ subMsg }}</h3>
-    {{ msg }}
+  <div class="message">
+    <h2>{{ subTitle }}</h2>
+    <div v-for="m in msg" class="message__sub-message">
+      {{ m }}
+    </div>
   </div>
 </template>
 
@@ -13,7 +14,7 @@ export default {
   name: 'Message',
   data () {
     return {
-      subMsg: 'Vue.js, VueRouter, Vuex'
+      subTitle: 'made by Vue.js, VueRouter, Vuex'
     }
   },
   computed: {
@@ -28,5 +29,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.message {
+  margin-top: 60px;
+
+  &__sub-message {
+    font-size: 20px;
+  }
+}
 </style>

@@ -1,3 +1,4 @@
+const path = require('path')
 const VueLoaderPlugin = require("vue-loader/lib/plugin")
 
 module.exports = {
@@ -27,11 +28,20 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(c|sc)ss$/,
         use: [
-          "vue-style-loader",
-          "css-loader",
-        ],
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                path.resolve(__dirname, 'src/assets/styles/_mixins.scss')
+              ]
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -43,9 +53,9 @@ module.exports = {
     new VueLoaderPlugin()
   ],
   resolve: {
-    extensions: [".vue", ".js"],
+    extensions: ['.vue', '.js'],
     alias: {
-      "vue$": "vue/dist/vue.esm.js"
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
   devServer: {
