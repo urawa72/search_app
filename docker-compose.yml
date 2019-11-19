@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: root
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - ./mysql_data:/var/lib/mysql
 
@@ -41,7 +41,7 @@ services:
         soft: -1
         hard: -1
     ports:
-      - "9200:9200"
+      - "9201:9200"
     volumes:
       - ./search_data:/usr/share/elasticsearch/data
 

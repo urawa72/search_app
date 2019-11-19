@@ -3,18 +3,21 @@ import axios from "axios"
 export const search = {
   namespaced: true,
   state: {
-    msg: ['This is default message']
+    results: []
   },
   mutations: {
     search(state, data) {
-      state.msg.push(data)
+      state.results = []
+      state.results.push(data[0])
+      console.log(state.results)
     }
   },
   actions: {
-    async searchArticles({ commit }) {
-      // const res = await axios.get('http://localhost:5000/api/v1/search')
-      const res = { 'data': 'This is dummy response message' }
-      console.log(res)
+    async searchBooks({ commit }) {
+      const res = await axios.get(
+        'http://localhost:5000/api/v1/books/full_search',
+        { params: { keyword: 'Rust' } }
+      )
       commit('search', res.data)
     }
   }

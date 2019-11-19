@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1>Hello Vue!</h1>
-    <img src="./assets/icon.jpg">
     <router-view />
   </div>
 </template>

@@ -87,8 +87,8 @@ module Searchable
           post_tags: ['</highlight>'],
           number_of_fragments: 100,
           fields: {
-            "title": {},
-            "content": {}
+            "title": { fragment_size: 150, number_of_fragments: 100 },
+            "content": { type: "plain", fragment_size: 150, number_of_fragments: 50 }
           }
         },
         size: 100
