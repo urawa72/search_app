@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1>Hello Vue!</h1>
     <router-view />
   </div>
 </template>
@@ -16,7 +15,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  margin: 50px 0;
   color: #2c3e50;
 }
 </style>

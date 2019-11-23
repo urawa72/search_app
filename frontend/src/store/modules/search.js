@@ -9,7 +9,6 @@ export const search = {
     search(state, data) {
       state.results = []
       state.results.push(data[0])
-      console.log(state.results)
     }
   },
   actions: {

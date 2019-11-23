@@ -1,17 +1,13 @@
 <template>
-  <div>
+  <div class="home">
     <h2>Full Text Search for Oreilly</h2>
-    <div v-for="result in results">
-      <div v-html="result.highlight.title[0]"></div>
-      <template v-for="c in result.highlight.content">
-        <div v-html="convert(c)"></div>
-      </template>
-    </div>
+    <search-result :results="results" />
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import SearchResult from '../components/SearchResult'
 
 export default {
   name: 'Home',
@@ -30,17 +26,15 @@ export default {
   },
   mounted() {
     this.searchBooks()
-    console.log(results[0])
+  },
+  components: {
+    SearchResult
   }
 }
 </script>
 
 <style lang="scss" scoped>
-div {
-  padding: 10px 0;
-  &/deep/ highlight {
-    background-color: yellow;
-    font-weight: bold;
-  }
+.home {
+  text-align: center;
 }
 </style>
