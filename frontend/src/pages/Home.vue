@@ -1,16 +1,23 @@
 <template>
   <div class="home">
     <h2>Full Text Search for Oreilly</h2>
-    <search-result :results="results" />
+    <search-form @search="search" />
+    <search-result v-if="!!results" :results="results" />
   </div>
 </template>
 
 <script>
+import { debounce } from 'lodash'
 import { mapState, mapActions } from 'vuex'
 import SearchResult from '../components/SearchResult'
+import SearchForm from '../components/SearchForm'
 
 export default {
   name: 'Home',
+  components: {
+    SearchResult,
+    SearchForm
+  },
   data () {
     return {
     }
@@ -20,15 +27,9 @@ export default {
   },
   methods: {
     ...mapActions('search', ['searchBooks']),
-    convert(content) {
-      return content.replace(/\r\n/g, '<br>')
-    }
-  },
-  mounted() {
-    this.searchBooks()
-  },
-  components: {
-    SearchResult
+    search: debounce(function(keyword) {
+      this.searchBooks(keyword)
+    }, 500)
   }
 }
 </script>

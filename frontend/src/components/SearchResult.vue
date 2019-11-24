@@ -1,7 +1,7 @@
 <template>
   <div class="search-result">
     <search-result-header />
-    <search-result-data :results="results" />
+    <search-result-data v-if="results.length > 0" :results="results" />
   </div>
 </template>
 

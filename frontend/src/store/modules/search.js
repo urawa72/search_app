@@ -8,14 +8,14 @@ export const search = {
   mutations: {
     search(state, data) {
       state.results = []
-      state.results.push(data[0])
+      state.results.push(...data)
     }
   },
   actions: {
-    async searchBooks({ commit }) {
+    async searchBooks({ commit }, keyword) {
       const res = await axios.get(
         'http://localhost:5000/api/v1/books/full_search',
-        { params: { keyword: 'Rust' } }
+        { params: { keyword: keyword } }
       )
       commit('search', res.data)
     }

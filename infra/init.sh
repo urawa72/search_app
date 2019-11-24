@@ -19,4 +19,4 @@ cat __tmpfile__ > config/database.yml
 rm __tmpfile__
 bundle exec rails db:create
 bundle exec rails db:migrate
-bundle exec rails s -b 0.0.0.0
+exec /bin/bash

@@ -1,12 +1,10 @@
 <template>
   <div class="search-result__data">
     <template v-for="result in results">
-      <template v-for="c in result.highlight.content">
-        <div class="search-result__data-row">
-          <div class="search-result__data-title" v-html="result.highlight.title[0]"></div>
-          <div class="search-result__data-content" v-html="convert(c)"></div>
-        </div>
-      </template>
+      <div class="search-result__data-row">
+        <div class="search-result__data-title" v-html="getTitle(result)"></div>
+        <div class="search-result__data-content" v-html="getContent(result)"></div>
+      </div>
     </template>
   </div>
 </template>
@@ -20,6 +18,19 @@ export default {
   methods: {
     convert(content) {
       return content.replace(/\r\n/g, '<br>')
+    },
+    getTitle(result) {
+      if (result.highlight.title) {
+        return result.highlight.title
+      } else {
+        return result.source.title
+      }
+    },
+    getContent(result) {
+      let content = result.highlight.content
+      if (content !== null) {
+        return this.convert(content)
+      }
     }
   }
 }
