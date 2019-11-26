@@ -19,11 +19,14 @@ namespace :scraping do
     doc = Nokogiri::HTML.parse(html, nil, charset)
     books = doc.css("table#bookTable tbody tr").each_with_object([]) do |node, arr|
       title_node = node.css("td.title a")
+      isbn_13 = node.xpath("td[1]").text
       arr << {
         title: title_node.text,
         url: base_url + title_node.attribute("href").to_s.gsub("..", ""),
         price: node.css("td.price").text,
-        published_at: node.xpath("td[4]").text
+        published_at: node.xpath("td[4]").text,
+        isbn_13: isbn_13,
+        isbn_10: Book.isbn_13_to_10(isbn_13)
       }
     end
 
