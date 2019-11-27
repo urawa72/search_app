@@ -24,6 +24,7 @@ class Book < ApplicationRecord
       title: title,
       url: url,
       published_at: published_at,
+      isbn_10: isbn_10,
       content: content
     }
   end

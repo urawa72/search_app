@@ -53,6 +53,7 @@ module Searchable
       indexes :url, index: false
       indexes :price, index: false
       indexes :published_at, index: false
+      indexes :isbn_10, index: false
       indexes :content, type: 'text', analyzer: 'kuromoji_analyzer'
     end
   end
