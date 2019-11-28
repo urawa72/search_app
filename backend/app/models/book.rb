@@ -23,6 +23,7 @@ class Book < ApplicationRecord
       id: id,
       title: title,
       url: url,
+      price: price,
       published_at: published_at,
       isbn_10: isbn_10,
       content: content

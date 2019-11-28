@@ -11,7 +11,7 @@ class Api::V1::BooksController < ApplicationController
         },
         highlight: {
           title: result[:highlight][:title]&.first,
-          content: result[:highlight][:content]&.first
+          content: result[:highlight][:content]
         }
       }
     end

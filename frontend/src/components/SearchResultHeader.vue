@@ -1,9 +1,9 @@
 <template>
-  <div class="search-result__header">
-    <div class="search-result__header-title">
+  <div class="search-result-header">
+    <div class="search-result-header__title">
       タイトル
     </div>
-    <div class="search-result__header-content">
+    <div class="search-result-header__content">
       検索結果
     </div>
   </div>
@@ -16,18 +16,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.search-result {
-  &__header {
-    display: flex;
-    padding: 5px 10px;
-    background-color: #333333;
-    text-align: left;
-    color: white;
-  }
-  &__header-title {
+.search-result-header {
+  display: flex;
+  padding: 5px 10px;
+  background-color: #333333;
+  text-align: left;
+  color: white;
+  &__title {
     width: 40%;
   }
-  &__header-content {
+  &__content {
     width: 60%;
   }
 }
