@@ -1,12 +1,13 @@
 <template>
   <div class="search-result">
-    <search-result-header />
+    <div class="search-result__result-count" v-show="results.length > 0">
+      検索結果： {{ results.length }} 件
+    </div>
     <search-result-data v-if="results.length > 0" :results="results" />
   </div>
 </template>
 
 <script>
-import SearchResultHeader from './SearchResultHeader'
 import SearchResultData from './SearchResultData'
 
 export default {
@@ -20,7 +21,6 @@ export default {
     }
   },
   components: {
-    SearchResultHeader,
     SearchResultData
   }
 }
@@ -32,5 +32,9 @@ export default {
   flex-direction: column;
   width: 70vw;
   margin: 0 auto;
+  &__result-count {
+    padding: 10px 0;
+    font-size: 16px;
+  }
 }
 </style>

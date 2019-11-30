@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h2>Full Text Search for Oreilly</h2>
+    <home-header />
     <search-form @search="search" />
     <search-result v-if="!!results" :results="results" />
   </div>
@@ -9,12 +9,14 @@
 <script>
 import { debounce } from 'lodash'
 import { mapState, mapActions } from 'vuex'
-import SearchResult from '../components/SearchResult'
-import SearchForm from '../components/SearchForm'
+import HomeHeader from 'components/HomeHeader'
+import SearchResult from 'components/SearchResult'
+import SearchForm from 'components/SearchForm'
 
 export default {
   name: 'Home',
   components: {
+    HomeHeader,
     SearchResult,
     SearchForm
   },

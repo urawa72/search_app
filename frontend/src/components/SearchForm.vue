@@ -1,6 +1,6 @@
 <template>
   <div class="search-form">
-    <h3>Let's Search!</h3>
+    <h2>Let's Search!</h2>
     <input type="text" v-model="keyword" />
   </div>
 </template>
@@ -27,6 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .search-form {
-  margin: 20px 0;
+  margin-top: 80px;
+  margin-bottom: 20px;
 }
 </style>

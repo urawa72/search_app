@@ -1,5 +1,20 @@
 version: '3'
 services:
+  # Rails
+  app:
+    build:
+      context: ./
+      dockerfile: ./infra/dockerfiles/rails/Dockerfile
+    volumes:
+      - ./backend:/myapp
+    ports:
+      - "5000:3000"
+    links:
+      - db
+      - es
+    tty: true
+    stdin_open: true
+
   # MySQL
   db:
     image: mysql:5.7
@@ -12,23 +27,8 @@ services:
     volumes:
       - ./mysql_data:/var/lib/mysql
 
-  # Rails
-  app:
-    build:
-      context: ./
-      dockerfile: ./infra/dockerfiles/rails/Dockerfile
-    volumes:
-      - ./backend:/myapp
-    ports:
-      - "5000:3000"
-    links:
-      - db
-      - search
-    tty: true
-    stdin_open: true
-
   # Elasticsearch
-  search:
+  es:
     build:
       context: ./
       dockerfile: ./infra/dockerfiles/search/Dockerfile
