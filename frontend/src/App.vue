@@ -1,12 +1,18 @@
 <template>
   <div class="container">
+    <global-header />
     <router-view />
   </div>
 </template>
 
 <script>
+import GlobalHeader from 'components/GlobalHeader'
+
 export default {
   name: 'App',
+  components: {
+    GlobalHeader
+  }
 }
 </script>
 
@@ -17,6 +23,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   margin: 50px 0;
   font-size: 12px;
+  text-align: center;
   color: #2c3e50;
 }
 </style>

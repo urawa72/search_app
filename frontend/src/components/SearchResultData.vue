@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     convert(content) {
-      return content.replace(/\r\n/g, '<br>')
+      return content.replace(/\r\n/g, '<br>').replace(/<select>/g, "&lt;select&gt;")
     },
     getTitle(result) {
       if (result.highlight.title) {

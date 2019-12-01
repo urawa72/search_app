@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <home-header />
+    <h2>Let's Search!</h2>
     <search-form @search="search" />
     <search-result v-if="!!results" :results="results" />
   </div>
@@ -9,20 +9,14 @@
 <script>
 import { debounce } from 'lodash'
 import { mapState, mapActions } from 'vuex'
-import HomeHeader from 'components/HomeHeader'
 import SearchResult from 'components/SearchResult'
 import SearchForm from 'components/SearchForm'
 
 export default {
   name: 'Home',
   components: {
-    HomeHeader,
     SearchResult,
     SearchForm
-  },
-  data () {
-    return {
-    }
   },
   computed: {
     ...mapState('search', ['results'])
@@ -38,6 +32,6 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  text-align: center;
+  margin-top: 80px;
 }
 </style>
