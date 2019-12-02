@@ -1,4 +1,9 @@
 class Api::V1::BooksController < ApplicationController
+  def index
+    results = Book.all
+    render json: results
+  end
+
   def full_search
     results = Book.search(params[:keyword]).results.to_a.map do |result|
       {

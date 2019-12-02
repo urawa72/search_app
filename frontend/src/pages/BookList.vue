@@ -1,6 +1,9 @@
 <template>
   <div class="book-list">
     <h2>Book List</h2>
+    <div v-for="result in results">
+      {{ result.title }}
+    </div>
   </div>
 </template>
 
@@ -17,13 +20,16 @@ export default {
     }
   },
   computed: {
-    ...mapState('search', ['results'])
+    ...mapState('books', ['results'])
   },
   methods: {
-    ...mapActions('search', ['searchBooks']),
+    ...mapActions('books', ['getList']),
     getBookList() {
-
+      this.getList()
     }
+  },
+  mounted() {
+    this.getBookList()
   }
 }
 </script>
