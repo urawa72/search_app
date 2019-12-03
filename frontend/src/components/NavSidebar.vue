@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar-wrap" :class="{ 'open' : isOpen }">
+  <div class="nav-sidebar" :class="{ 'open' : isOpen }">
     <NavLinks @close="closeSidebar()" />
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sidebar-wrap {
+.nav-sidebar {
   position: fixed;
   top: 0;
   left: 0;

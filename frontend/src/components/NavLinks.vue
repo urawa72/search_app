@@ -1,8 +1,8 @@
 <template>
-  <div class="nav-links-wrap">
-    <div class="nav-links-inner" @click="closeSidebar()">
-      <router-link to="/" class="nav-links">Home</router-link>
-      <router-link to="/list" class="nav-links">List</router-link>
+  <div class="nav-links">
+    <div class="nav-links__inner" @click="closeSidebar()">
+      <router-link to="/" class="nav-links__link">Home</router-link>
+      <router-link to="/list" class="nav-links__link">List</router-link>
     </div>
   </div>
 </template>
@@ -19,37 +19,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nav-links-wrap {
-  display: flex;
-  top: 0;
-  bottom: 40px;
-  left: 0;
-  right: 0;
-  overflow-y: auto;
-  padding: 30px;
-  position: absolute;
-  flex-direction: column;
-}
-.nav-links-inner {
-  /* desktop */
-  @include mq-up(md) {
-    padding: 0 30px;
-    flex: 2;
-  }
-}
 .nav-links {
-  text-decoration: none;
-  font-size: 1rem;
-  color: #000;
-  padding: 0 10px;
-  &:hover {
-    opacity: .6;
-    transition: .2s;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    overflow: auto;
+    padding: 30px;
+    text-align: left;
   }
-  /* mobile */
-  @include mq-down(md) {
-    display: block;
-    padding: 5px 0;
+  &__link {
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #000;
+    &:hover {
+      opacity: .6;
+      transition: .2s;
+    }
   }
 }
 </style>
