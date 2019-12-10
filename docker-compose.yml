@@ -5,7 +5,6 @@ services:
     build:
       context: ./
       dockerfile: ./infra/dockerfiles/rails/Dockerfile
-    command: bundle exec rails s -b '0.0.0.0'
     volumes:
       - ./backend:/myapp
     ports:

@@ -10,13 +10,11 @@ RUN gem install bundler
 
 # rails準備
 WORKDIR /tmp
-COPY ./infra/docker-init.sh /tmp/init.sh
-RUN chmod +x /tmp/init.sh
+COPY ./init.sh /usr/bin/
+RUN chmod +x /usr/bin/init.sh
 COPY ./backend/Gemfile Gemfile
 COPY ./backend/Gemfile.lock Gemfile.lock
 RUN bundle install
 ENV APP_HOME /myapp
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
-
-CMD "bundle exec rails s -b 0.0.0.0"

@@ -1,8 +1,7 @@
 #!/bin/sh
-# 初回起動時のみ使用する
 
-# APIモードでrailsアプリ作成
 cd /myapp
+
 rails new . --force --api --database=mysql --skip-bundle
 
 # bundle install
