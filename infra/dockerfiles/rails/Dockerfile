@@ -10,7 +10,7 @@ RUN gem install bundler
 
 # rails準備
 WORKDIR /tmp
-COPY ./init.sh /usr/bin/
+COPY ./infra/dockerfiles/rails/init.sh /usr/bin/
 RUN chmod +x /usr/bin/init.sh
 COPY ./backend/Gemfile Gemfile
 COPY ./backend/Gemfile.lock Gemfile.lock
