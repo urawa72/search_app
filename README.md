@@ -22,6 +22,12 @@ init.sh
 bundle exec rake scraping:oreilly
 ```
 
+- ESにインデックス作成・データインポートする。
+```
+# コンテナ内
+bundle exec rake es:create_import
+```
+
 - ローカルでフロントエンドアプリを起動する（開発環境で実行のみ可能）。
 ```
 cd frontend
